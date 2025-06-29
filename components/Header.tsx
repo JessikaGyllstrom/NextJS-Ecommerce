@@ -62,7 +62,7 @@ function Header() {
             />
           </Form>
         </div>
-        <div className="flex justify-center items-center space-x-12 mt-4 sm-mt-0 flex-1 md:flex-none md:space-x-4 bg-pink-500">
+        <div className="flex justify-center items-center space-x-12 mt-4 sm-mt-0 flex-1 md:flex-none md:space-x-4">
           <div className="relative group">
             <Link href="/basket" className="">
               <TrolleyIcon className="w-8 h-8 text-zinc-900" />

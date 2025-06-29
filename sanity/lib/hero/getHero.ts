@@ -9,6 +9,7 @@ export const getHero = async () => {
     _updatedAt,
     _rev,
     name,
+    title,
     description,
     image {
       asset {

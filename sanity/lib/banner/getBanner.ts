@@ -9,6 +9,7 @@ export const getBanner = async () => {
     _updatedAt,
     _rev,
     name,
+    title,
     image {
       asset {
         _ref,

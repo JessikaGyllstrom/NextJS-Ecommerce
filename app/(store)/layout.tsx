@@ -60,8 +60,9 @@ export default function RootLayout({
           </main>
           <SanityLive />
         </body>
-        <Footer />
       </html>
+      <Footer />
+
     </ClerkProvider>
   );
 }

@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import Hero from "@/components/Hero";
 import ProductsView from "@/components/ProductsView";
+import Sale from "@/components/Sale";
 import { getBanner } from "@/sanity/lib/banner/getBanner";
 import { getHero } from "@/sanity/lib/hero/getHero";
 import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
@@ -13,16 +14,13 @@ export default async function Home() {
   const hero = await getHero();
 
   return (
-    <div className="flex flex-col space-y-8">
-      {/* Vertical stacking */}
-      <div className="flex">
-        <Hero hero={hero} />
+    <div className="">
+      <Hero hero={hero} />
+      <Banner banner={banner} />
 
-        <Banner banner={banner} />
-      </div>
-      <div>
-        <ProductsView products={products} categories={categories} />
-      </div>
+      <Sale />
+
+      {/* <ProductsView products={products} categories={categories} /> */}
     </div>
   );
 }
