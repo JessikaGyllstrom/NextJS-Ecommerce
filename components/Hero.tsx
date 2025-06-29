@@ -3,6 +3,7 @@ import React from "react";
 import type { Hero } from "../sanity.types";
 import { imageUrl } from "@/lib/imageUrl";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 interface HeroProps {
   hero: Hero[];
@@ -14,29 +15,26 @@ function Hero({ hero }: HeroProps) {
     <div className="flex h-screen">
       {/* Categories */}
       {/* <CategorySelectorComponent /> */}
-      <div className="flex w-screen justify-center">
+      <div className="container mx-auto flex flex-col items-center">
         {hero.map((item, idx) => (
-          <div
-            key={idx}
-            className="relative aspect-square sm:aspect-[16/9] w-full"
-          >
+          <div key={idx} className="relative w-screen h-[90vh]">
             <Image
               src={item.image ? imageUrl(item.image).url() : ""}
               alt={item.name || "Hero image"}
-              fill
-              className="object-cover opacity-40 md:opacity-100"
+              layout="fill"
+              objectFit="cover"
             />
 
-            <div className="z-20 absolute flex flex-col items-left top-40 py-6 md:w-[50%] md:right-6">
-              <h1 className="font-bold text-3xl md:text-6xl text-zinc-900 px-2 py-1 rounded text-center md:text-left">
+            <div className="absolute right-18 top-1/3 transform -translate-y-1/2 w-1/2">
+              <h1 className="font-bold text-6xl text-zinc-900 py-1 text-left">
                 {item.name?.split(" ").slice(0, 3).join(" ")} <br />{" "}
                 {item.name?.split(" ").slice(3, 5).join(" ")}
                 <span className="ml-2 text-sage-500">
                   {item.name?.split(" ").slice(-1)}
                 </span>
               </h1>
-              <div className="px-10 text-center md:text-left md:px-2 md:w-[70%] ">
-                <p className="mt-2 text-md text-zinc-900">
+              <div className="text-left md:px-2 md:w-[70%] ">
+                <p className="mt-2 pr-3 text-xl text-zinc-900">
                   {item.description
                     ?.map((block) =>
                       block._type === "block"
@@ -46,6 +44,9 @@ function Hero({ hero }: HeroProps) {
                     .join(" ") || "No description available."}
                 </p>
               </div>
+              <Button className="my-4 mx-2 rounded-none px-12 py-6 text-white bg-sage-500 text-lg cursor-pointer shadow-xl hover:bg-sage-400">
+                Shop Now
+              </Button>
             </div>
           </div>
         ))}

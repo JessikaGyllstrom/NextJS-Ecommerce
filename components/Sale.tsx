@@ -27,7 +27,7 @@ async function Sale() {
               objectFit="cover"
               className="shadow-lg"
             />
-            <section className="w-full py-10">
+            <div className="w-full py-10">
               <div className="container mx-auto flex flex-col items-center">
                 {sale.image && (
                   <div className="relative w-screen h-[90vh]">
@@ -61,7 +61,7 @@ async function Sale() {
                   </div>
                 )}
               </div>
-            </section>
+            </div>
           </div>
         )}
       </div>
