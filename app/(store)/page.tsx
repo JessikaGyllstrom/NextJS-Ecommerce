@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import CategorySelector from "@/components/CategorySelector";
 import Hero from "@/components/Hero";
 import ProductsView from "@/components/ProductsView";
 import Sale from "@/components/Sale";
@@ -17,6 +18,7 @@ export default async function Home() {
     <div className="flex flex-col">
       <Hero hero={hero} />
       <Banner banner={banner} />
+      <CategorySelector categories={categories} />
       <ProductsView products={products} categories={categories} />
       <Sale />
     </div>
