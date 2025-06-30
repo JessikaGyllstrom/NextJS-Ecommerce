@@ -380,7 +380,7 @@ export type AllSanitySchemaTypes = Hero | Banner | Sale | Order | Product | Cate
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/banner/getBanner.ts
 // Variable: BANNER_QUERY
-// Query: *[_type == "banner"] | order(name asc) {    _id,    _type,    _createdAt,    _updatedAt,    _rev,    name,    image {      asset {        _ref,        _type      },      hotspot,      crop    }  }
+// Query: *[_type == "banner"] | order(name asc) {    _id,    _type,    _createdAt,    _updatedAt,    _rev,    name,    title,    image {      asset {        _ref,        _type      },      hotspot,      crop    }  }
 export type BANNER_QUERYResult = Array<{
   _id: string;
   _type: "banner";
@@ -388,6 +388,7 @@ export type BANNER_QUERYResult = Array<{
   _updatedAt: string;
   _rev: string;
   name: string | null;
+  title: null;
   image: {
     asset: {
       _ref: string;
@@ -400,7 +401,7 @@ export type BANNER_QUERYResult = Array<{
 
 // Source: ./sanity/lib/hero/getHero.ts
 // Variable: HERO_QUERY
-// Query: *[_type == "hero"] | order(name asc) {    _id,    _type,    _createdAt,    _updatedAt,    _rev,    name,    description,    image {      asset {        _ref,        _type      },      hotspot,      crop    },     heroIcon {      asset {        _ref,        _type      },      hotspot,      crop    }  }
+// Query: *[_type == "hero"] | order(name asc) {    _id,    _type,    _createdAt,    _updatedAt,    _rev,    name,    title,    description,    image {      asset {        _ref,        _type      },      hotspot,      crop    },     heroIcon {      asset {        _ref,        _type      },      hotspot,      crop    }  }
 export type HERO_QUERYResult = Array<{
   _id: string;
   _type: "hero";
@@ -408,6 +409,7 @@ export type HERO_QUERYResult = Array<{
   _updatedAt: string;
   _rev: string;
   name: string | null;
+  title: null;
   description: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -536,6 +538,71 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   stock?: number;
 }>;
 
+// Source: ./sanity/lib/products/getProductsByCategory.ts
+// Variable: PRODUCTS_BY_CATEGORY_QUERY
+// Query: *[    _type == "product"     && references([_type == "category" && slug.current == $categorySlug]._id)  ] | order(name asc)
+export type PRODUCTS_BY_CATEGORY_QUERYResult = Array<{
+  _id: string;
+  _type: "product";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  price?: number;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  stock?: number;
+}>;
+
 // Source: ./sanity/lib/products/searchProductsByName.ts
 // Variable: PRODUCT_SEARCH_QUERY
 // Query: *[    _type == "product"     && name match $searchParam    ] | order(name asc)
@@ -601,14 +668,34 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
   stock?: number;
 }>;
 
+// Source: ./sanity/lib/sales/getActiveSaleByCouponCode.ts
+// Variable: ACTIVE_SALE_BY_COUPON_QUERY
+// Query: *[      _type == "sale" && couponCode == $couponCode && isActive == true    ] {      title,      description,      discountPercentage,      isActive,      image {                      asset {            _ref,            _type            },            hotspot,            crop        },      }
+export type ACTIVE_SALE_BY_COUPON_QUERYResult = Array<{
+  title: string | null;
+  description: string | null;
+  discountPercentage: null;
+  isActive: boolean | null;
+  image: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+    } | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"banner\"] | order(name asc) {\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    name,\n    image {\n      asset {\n        _ref,\n        _type\n      },\n      hotspot,\n      crop\n    }\n  }": BANNER_QUERYResult;
-    "*[_type == \"hero\"] | order(name asc) {\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    name,\n    description,\n    image {\n      asset {\n        _ref,\n        _type\n      },\n      hotspot,\n      crop\n    }, \n    heroIcon {\n      asset {\n        _ref,\n        _type\n      },\n      hotspot,\n      crop\n    }\n  }": HERO_QUERYResult;
+    "*[_type == \"banner\"] | order(name asc) {\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    name,\n    title,\n    image {\n      asset {\n        _ref,\n        _type\n      },\n      hotspot,\n      crop\n    }\n  }": BANNER_QUERYResult;
+    "*[_type == \"hero\"] | order(name asc) {\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    name,\n    title,\n    description,\n    image {\n      asset {\n        _ref,\n        _type\n      },\n      hotspot,\n      crop\n    }, \n    heroIcon {\n      asset {\n        _ref,\n        _type\n      },\n      hotspot,\n      crop\n    }\n  }": HERO_QUERYResult;
     "*[\n    _type == \"category\"\n  ] | order(name asc)\n   ": ALL_CATEGORIES_QUERYResult;
     "*[\n    _type == \"product\"\n  ] | order(name asc)\n   ": ALL_PRODUCTS_QUERYResult;
+    "*[\n    _type == \"product\"\n     && references([_type == \"category\" && slug.current == $categorySlug]._id)\n  ] | order(name asc)\n   ": PRODUCTS_BY_CATEGORY_QUERYResult;
     "\n    *[\n    _type == \"product\" \n    && name match $searchParam\n    ] | order(name asc) \n     ": PRODUCT_SEARCH_QUERYResult;
+    "*[\n      _type == \"sale\" && couponCode == $couponCode && isActive == true\n    ] {\n      title,\n      description,\n      discountPercentage,\n      isActive,\n      image {\n          \n            asset {\n            _ref,\n            _type\n            },\n            hotspot,\n            crop\n        },\n      }": ACTIVE_SALE_BY_COUPON_QUERYResult;
   }
 }

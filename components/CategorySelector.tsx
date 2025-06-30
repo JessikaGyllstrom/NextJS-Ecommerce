@@ -28,23 +28,24 @@ function CategorySelector({ categories }: CategorySelectorProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<string | null>(null);
   const router = useRouter();
-  console.log("Categories:", categories);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-full max-w-full relative flex justify-center sm:justify-end sm:flex-none items-center space-x-2 hover:bg-gray-200 hover:text-white border-black/90 text-black rounded-none font-normal py-2 px-4 "
-        >
-          {value
-            ? categories.find((category) => category._id === value)?.title
-            : "Filter by Category"}
-          <ChevronsUpDown className="ml-2 h-4 w-4" shrink-0 />
-        </Button>
+        <div className="flex justify-center border-black/80">
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="inline-flex justify-center space-x-2 cursor-pointer hover:bg-gray-200 text-black rounded-none font-normal py-2 px-4"
+          >
+            {value
+              ? categories.find((category) => category._id === value)?.title
+              : "Filter by Category"}
+            <ChevronsUpDown className="ml-2 h-4 w-4  shrink-0 " />
+          </Button>
+        </div>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0">
+      <PopoverContent className="w-full p-0 bg-pink-400">
         <Command>
           <CommandInput
             placeholder="Search category..."
@@ -58,22 +59,23 @@ function CategorySelector({ categories }: CategorySelectorProps) {
                 );
                 if (selectedCategory?.slug?.current) {
                   setValue(selectedCategory._id);
-                  router.push(`/category/${selectedCategory.slug.current}`);
+                  router.push(`/categories/${selectedCategory.slug.current}`);
                   setOpen(false);
                 }
               }
             }}
           />
+
           <CommandList>
             <CommandEmpty>No Category found.</CommandEmpty>
             <CommandGroup>
-              {categories.map((category) => (
+              {categories.map((category, idx) => (
                 <CommandItem
-                  key={category._id}
+                  key={`category-${idx}`}
                   value={category.title}
                   onSelect={(currentValue) => {
                     setValue(category._id ? "" : category._id);
-                    router.push(`/category/${category.slug?.current}`);
+                    router.push(`/categories/${category.slug?.current}`);
                     setOpen(false);
                   }}
                 >

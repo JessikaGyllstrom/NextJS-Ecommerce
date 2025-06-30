@@ -30,7 +30,7 @@ function ProductThumb({ product }: { product: Product }) {
         )}
       </div>
       <div className="p-4">
-        <h2 className="text-lg font-normal text-gray-900 truncate">
+        <h2 className="text-lg font-medium text-gray-900 truncate">
           {product.name}
         </h2>
         <p className="mt-2 text-sm text-gray-800 line-clamp-3">
@@ -42,7 +42,7 @@ function ProductThumb({ product }: { product: Product }) {
             )
             .join(" ") || "No description available."}
         </p>
-        <p className="mt-2 text-lg font-semibold text-gray-900">
+        <p className="mt-2 text-lg font-medium text-gray-900">
           ${product.price?.toFixed(2)}
         </p>
       </div>
