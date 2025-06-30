@@ -15,6 +15,7 @@ async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
           .split("-")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" ")}{" "}
+        Collection
       </h1>
       <CategorySelector categories={categories} />
       <ProductsView products={products} categories={categories} />

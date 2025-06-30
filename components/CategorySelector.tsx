@@ -31,7 +31,7 @@ function CategorySelector({ categories }: CategorySelectorProps) {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div className="flex justify-center border-black/80">
+        <div className="flex justify-center border-black/80 pt-2">
           <Button
             variant="outline"
             role="combobox"
