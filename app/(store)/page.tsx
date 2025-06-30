@@ -1,5 +1,6 @@
 import Banner from "@/components/Banner";
 import CategorySelector from "@/components/CategorySelector";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ProductsView from "@/components/ProductsView";
 import Sale from "@/components/Sale";
@@ -15,7 +16,7 @@ export default async function Home() {
   const hero = await getHero();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen w-screen">
       <Hero hero={hero} />
       <Banner banner={banner} />
       <CategorySelector categories={categories} />

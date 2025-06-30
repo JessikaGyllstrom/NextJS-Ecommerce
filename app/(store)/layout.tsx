@@ -8,7 +8,7 @@ import { Roboto } from "next/font/google";
 import { Baloo_2 } from "next/font/google";
 import { Poppins } from "next/font/google";
 import { Montserrat } from "next/font/google";
-import Footer from "@/components/ui/Footer";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"], // Specify the character subset
@@ -61,14 +61,12 @@ export default function RootLayout({
           className={`${monserrat.variable} antialiased`}
           // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <main>
-            <Header />
-            {children}
-          </main>
+          <Header />
+          <main>{children}</main>
+          <Footer />
           <SanityLive />
         </body>
       </html>
-      <Footer />
     </ClerkProvider>
   );
 }
