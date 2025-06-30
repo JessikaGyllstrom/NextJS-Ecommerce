@@ -18,9 +18,9 @@ module.exports = {
       },
     },
     corePlugins: {
-      preflight: false, // Disable Tailwind's base styles
+      preflight: false,
     },
   },
   safelist: ["bg-sage", "text-sage"],
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
