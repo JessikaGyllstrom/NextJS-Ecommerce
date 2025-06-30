@@ -14,13 +14,11 @@ export default async function Home() {
   const hero = await getHero();
 
   return (
-    <div className="">
+    <div className="flex flex-col">
       <Hero hero={hero} />
       <Banner banner={banner} />
-
+      <ProductsView products={products} categories={categories} />
       <Sale />
-
-      {/* <ProductsView products={products} categories={categories} /> */}
     </div>
   );
 }

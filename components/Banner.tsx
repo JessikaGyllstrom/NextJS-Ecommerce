@@ -10,26 +10,22 @@ interface BannerProps {
 
 function Banner({ banner }: BannerProps) {
   return (
-    <div className="flex w-screen bg-pink-300">
-      {/* Categories */}
-      {/* <CategorySelectorComponent /> */}
-      <div className="flex w-screen bg-sage-500 justify-center h-32 my-4 px-2">
-        {banner.map((item) => (
-          <div
-            className="flex flex-col items-center px-4 justify-center"
-            key={item._id}
-          >
-            <Image
-              className="max-w-14"
-              src={item.image ? imageUrl(item.image).url() : ""}
-              alt={item.name || "Product Image"}
-              width={60}
-              height={60}
-            />
-            <p className="text-white font-normal pt-2">{item.name}</p>
-          </div>
-        ))}
-      </div>
+    <div className="flex w-screen bg-sage-500 justify-center h-44">
+      {banner.map((item) => (
+        <div
+          className="flex flex-col items-center px-6 justify-center"
+          key={item._id}
+        >
+          <Image
+            className="max-w-14"
+            src={item.image ? imageUrl(item.image).url() : ""}
+            alt={item.name || "Product Image"}
+            width={50}
+            height={50}
+          />
+          <p className="text-white font-light pt-2">{item.name}</p>
+        </div>
+      ))}
     </div>
   );
 }

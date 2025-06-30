@@ -7,12 +7,19 @@ import { SanityLive } from "@/sanity/lib/live";
 import { Roboto } from "next/font/google";
 import { Baloo_2 } from "next/font/google";
 import { Poppins } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Footer from "@/components/ui/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"], // Specify the character subset
   weight: ["100", "200", "400", "700", "900"], // Include the font weights you need
   variable: "--font-poppins", // Optional: Define a CSS variable for the font
+});
+
+const monserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "200", "400", "700", "900"],
+  variable: "--font-montserrat",
 });
 
 const baloo2 = Baloo_2({
@@ -22,7 +29,7 @@ const baloo2 = Baloo_2({
 });
 
 const roboto = Roboto({
-  weight: ["400", "700", "900"],
+  weight: ["100", "200", "400", "700", "900"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto", // Optional: Define a CSS variable for the font
@@ -51,7 +58,7 @@ export default function RootLayout({
     <ClerkProvider dynamic>
       <html lang="en">
         <body
-          className={`${poppins.variable} antialiased`}
+          className={`${monserrat.variable} antialiased`}
           // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <main>
@@ -62,7 +69,6 @@ export default function RootLayout({
         </body>
       </html>
       <Footer />
-
     </ClerkProvider>
   );
 }

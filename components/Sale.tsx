@@ -40,13 +40,13 @@ async function Sale() {
                       className="shadow-lg"
                     />
                     <div className="absolute right-11 top-1/3 transform -translate-y-1/2 w-1/2">
-                      <h2 className=" text-black font-bold text-6xl py-2 rounded-lg">
+                      <h2 className=" text-black font-bold text-4xl py-2 rounded-lg">
                         {sale.title ? (
                           <>
                             <span className="block">
                               {sale.title.split(" ").slice(0, 3).join(" ")}
                             </span>
-                            <span className="block mt-6 md:text-8xl ">
+                            <span className="block mt-6 md:text-6xl ">
                               {sale.title.split(" ").slice(3, 8).join(" ")}
                             </span>
                           </>
@@ -54,7 +54,7 @@ async function Sale() {
                           "Don't miss out on this amazing offer!"
                         )}
                       </h2>
-                      <p className="mt-6 pr-6 text-xl font-normal text-zinc-900 break-words">
+                      <p className="mt-6 pr-12 text-lg weight-light text-zinc-900 break-words">
                         {sale.description || "Special Sale"}
                       </p>
                     </div>

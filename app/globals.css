@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @tailwind utilities;
@@ -116,7 +121,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: Poppins, sans-serif;
+    /* font-family: Roboto, sans-serif; */
+    /* font-family: Poppins, sans-serif; */
+    /* font-family: Inter, sans-serif; */
+    font-family: Montserrat, sans-serif;
+    /* font-family: Nunito, sans-serif; */
   }
 }
 
@@ -132,10 +141,4 @@
   --color-blush-500: #dacac1;
   --color-blush-600: #c4b5ad;
   --color-blush-800: #827973;
-}
-.font-semibold {
-  font-weight: 500;
-}
-.font-md {
-  font-weight: 300;
 }

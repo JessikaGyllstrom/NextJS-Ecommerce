@@ -1,0 +1,2 @@
+- [] Add sanity schema to add data in Footer instead of hardcoded text
+- [] Remove unused font imports
