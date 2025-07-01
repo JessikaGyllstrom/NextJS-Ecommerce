@@ -8,6 +8,7 @@ export const getHero = async () => {
     _createdAt,
     _updatedAt,
     _rev,
+    name,
     title,
     description,
     image {

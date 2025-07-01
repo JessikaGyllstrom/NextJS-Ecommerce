@@ -25,12 +25,12 @@ function AddToCartButton({ product, disabled }: AddToCartButtonProps) {
         className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200} ${
           itemCount === 0
             ? "bg-gray-100 cursor-not-allowed"
-            : "bg-gray-300 hover:bg-gray-300"
+            : "bg-gray-300 cursor-pointer hover:bg-gray-300"
         }`}
         disabled={itemCount === 0 || disabled}
       >
         <span
-          className={`text-xl text-gray-700 font-semibold ${itemCount === 0 ? "text-gray-400" : "text-gray-400"}`}
+          className={`text-xl font-semibold ${itemCount === 0 ? "text-gray-400" : "text-gray-700"}`}
         >
           -
         </span>
