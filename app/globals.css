@@ -136,9 +136,13 @@
   --color-sage-400: #60692c;
   --color-sage-500: #505723;
   --color-sage-600: #3d421d;
+  --color-sage-700: #32361a;
+
   --color-blush-300: #f6e8df;
   --color-blush-400: #ebd9c9;
   --color-blush-500: #dacac1;
   --color-blush-600: #c4b5ad;
+  --color-blush-700: #b0a199;
   --color-blush-800: #827973;
+  --color-blush-900: #706762;
 }

@@ -7,9 +7,13 @@ import Link from "next/link";
 import Form from "next/form"; // Adjust the path if Form is in the same directory
 import { BasketIcon, PackageIcon, TrolleyIcon } from "@sanity/icons";
 import { User } from "@clerk/nextjs/server";
+import useBasketStore from "@/app/(store)/store";
 
 function Header() {
   const { user } = useUser();
+  const itemCount = useBasketStore((state) =>
+    state.items.reduce((total, item) => total + item.quantity, 0)
+  );
 
   const createClerkPasskey = async () => {
     try {
@@ -86,9 +90,13 @@ function Header() {
         </div>
         <div className="flex justify-center items-center space-x-12 mt-4 sm-mt-0 flex-1 md:flex-none md:space-x-4">
           <div className="relative group">
-            <Link href="/basket" className="">
+            <Link href="/cart" className="">
               <TrolleyIcon className="w-8 h-8 text-zinc-900" />
-              {/* <span>Item count</span> */}
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-sage-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                  {itemCount}
+                </span>
+              )}
             </Link>
             <div
               className="z-50 absolute left-1/2 -translate-x-1/2 top-full mb-2 hidden group-hover:block bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap"

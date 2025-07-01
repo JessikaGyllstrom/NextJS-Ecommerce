@@ -6,7 +6,7 @@ function Loader() {
         <div className="absolute inset-0 flex items-center justify-center">
           <svg
             className="h-32 w-22"
-            fill="#dacac1"
+            fill="#505723"
             viewBox="0 0 512 512"
             xmlns="http://www.w3.org/2000/svg"
           >
