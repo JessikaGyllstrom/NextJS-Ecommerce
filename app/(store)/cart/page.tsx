@@ -1,12 +1,14 @@
 "use client";
 import React, { useEffect } from "react";
 import useBasketStore from "../store";
-import { useAuth, useUser } from "@clerk/nextjs";
+import { SignIn, SignInButton, useAuth, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import AddToCartButton from "@/components/AddToCartButton";
 import Image from "next/image";
 import { imageUrl } from "@/lib/imageUrl";
 import { Loader } from "lucide-react";
+import { set } from "sanity";
+import { randomUUID } from "crypto";
 
 function CartPage() {
   const { isSignedIn } = useAuth();
@@ -34,10 +36,29 @@ function CartPage() {
       </div>
     );
   }
-  console.log("groupedItems", groupedItems);
+  const handleCheckout = async () => {
+    if (!isSignedIn) return;
+    setIsLoading(true);
+    try {
+      const metadata: Metadata = {
+        orderNumber: crypto.randomUUID(),
+        customerName: user?.fullName || "Unknown Customer",
+        customerEmail: user?.emailAddresses[0]?.emailAddress || "Unknown Email",
+        clerkUserId: user?.id,
+      };
+      const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      }
+    } catch (error) {
+      console.error("Error creating checkout session", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <div className="container mx-auto p-4 max-w-6xl min-h-[100vh] lg:max-w-[40vw]">
+    <div className="container mx-auto p-4 max-w-6xl min-h-[100vh]">
       <h1 className="text-3xl font-bold my-6">Your Cart</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-grow">
@@ -65,7 +86,7 @@ function CartPage() {
                     height={400}
                   />
                 </div>
-                <div className="min-w-0 flex flex-col items-start bg-pink-500 w-full">
+                <div className="min-w-0 flex flex-col items-start w-full">
                   <h2 className="text-lg sm:text-xl font-semibold truncate">
                     {item.product.name}
                   </h2>
@@ -85,6 +106,37 @@ function CartPage() {
             </div>
           ))}
         </div>
+        <div className="w-full lg:w.80 lg:sticky lg:top-4 h-fit bg-white p-6 border rounded-lg shadow-lg order-first lg:order-last fixed bottom-0 lg:left-auto">
+          <h3 className="text-xl font-semibold">Order Summary</h3>
+          <div className="mt-4 space-y-2">
+            <p className="flex justify-between">
+              <span>Items:</span>
+            </p>
+            <p className="flex justify-between text-2xl font-bold border-t pt-2">
+              <span>Total:</span>
+              <span>
+                ${useBasketStore.getState().getTotalPrice().toFixed(2)}
+              </span>
+            </p>
+          </div>
+          {isSignedIn ? (
+            <button
+              onClick={handleCheckout}
+              disabled={isLoading}
+              className="mt-4 w-full bg-sage-500 text-white py-2 shadow-md hover:bg-sage-400 transition-colors duration-300
+         disabled:bg-gray-400"
+            >
+              {isLoading ? "Prossessing..." : "Checkout"}
+            </button>
+          ) : (
+            <SignInButton mode="modal">
+              <button className="mt-4 w-full bg-sage-500 text-white py-2 shadow-md hover:bg-sage-400 transition-colors duration-300">
+                Sign in to Checkout
+              </button>
+            </SignInButton>
+          )}
+        </div>
+        <div className="h-64 lg:h-0"></div>
       </div>
     </div>
   );
