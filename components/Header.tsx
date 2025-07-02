@@ -134,7 +134,11 @@ function Header() {
                 </div>
               </div>
             ) : (
-              <SignInButton mode="modal" />
+              <SignInButton mode="modal">
+                <button className="bg-blush-400 hover:bg-blush-500 cursor-pointer animate-pulser text-black py-2 px-4 shadow-lg">
+                  Sign In
+                </button>
+              </SignInButton>
             )}
             {user?.passkeys.length === 0 && (
               <button

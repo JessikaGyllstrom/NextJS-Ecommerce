@@ -10,7 +10,10 @@ interface BannerProps {
 
 function Banner({ banner }: BannerProps) {
   return (
-    <div className="flex w-screen bg-sage-500 justify-center h-44">
+    <div
+      id="products-section"
+      className="flex w-screen bg-sage-500 justify-center h-44"
+    >
       {banner.map((item) => (
         <div
           className="flex flex-col items-center px-6 justify-center"

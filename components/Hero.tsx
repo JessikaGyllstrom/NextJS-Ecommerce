@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import type { Hero } from "../sanity.types";
@@ -10,6 +11,12 @@ interface HeroProps {
 }
 
 function Hero({ hero }: HeroProps) {
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById("products-section");
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className=" mx-auto flex flex-col items-center">
       {hero.map((item, idx) => (
@@ -40,7 +47,10 @@ function Hero({ hero }: HeroProps) {
                   .join(" ") || "No description available."}
               </p>
             </div>
-            <Button className="my-4 mx-2 rounded-none px-12 py-6 text-white bg-sage-500 text-lg cursor-pointer shadow-xl hover:bg-sage-400">
+            <Button
+              onClick={scrollToProducts}
+              className="my-4 mx-2 rounded-none px-12 py-6 text-white bg-sage-500 text-lg cursor-pointer shadow-xl hover:bg-sage-400"
+            >
               Shop Now
             </Button>
           </div>

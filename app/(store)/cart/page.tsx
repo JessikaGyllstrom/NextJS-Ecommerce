@@ -61,9 +61,8 @@ function CartPage() {
       setIsLoading(false);
     }
   };
-
   return (
-    <div className="container mx-auto p-4 max-w-6xl min-h-[100vh]">
+    <div className="container mx-auto p-4 max-w-5xl min-h-[100vh]">
       <h1 className="text-3xl font-bold my-6">Your Cart</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-grow">
@@ -72,13 +71,14 @@ function CartPage() {
               key={item.product._id}
               className="mb-4 p-4 border rounded-lg shadow-lg flex justify-between items-center"
             >
-              <div
-                className="flex items-center cursor-pointer flex-1 min-w-0"
-                onClick={() =>
-                  router.push(`product/${item.product.slug?.current}`)
-                }
-              >
-                <div className="w-40 h-40  flex-shrink-0 mr-4">
+              <div className="flex items-center flex-1 min-w-0">
+                {/* Make the image clickable */}
+                <div
+                  className="w-40 h-40 flex-shrink-0 mr-4 cursor-pointer"
+                  onClick={() =>
+                    router.push(`product/${item.product.slug?.current}`)
+                  }
+                >
                   <Image
                     src={
                       item.product.image
@@ -86,13 +86,18 @@ function CartPage() {
                         : "Product Image"
                     }
                     alt={item.product.name ?? "Product Image"}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-lg cursor-pointer"
                     width={400}
                     height={400}
                   />
                 </div>
-                <div className="min-w-0 flex flex-col items-start w-full">
-                  <h2 className="text-lg sm:text-xl font-semibold truncate">
+                <div className="min-w-0 flex flex-col items-start justify-start w-full pr-6">
+                  <h2
+                    className="text-lg sm:text-xl font-semibold truncate cursor-pointer mb-4 hover:underline"
+                    onClick={() =>
+                      router.push(`product/${item.product.slug?.current}`)
+                    }
+                  >
                     {item.product.name}
                   </h2>
                   <p className="text-sm sm:text-base">
@@ -100,18 +105,18 @@ function CartPage() {
                     {((item.product.price ?? 0) * item.quantity).toFixed(2)}
                   </p>
                 </div>
+              </div>
 
-                <div className="flex items-center flex-shrink-0">
-                  <AddToCartButton
-                    product={item.product}
-                    disabled={item.quantity <= 0}
-                  />
-                </div>
+              <div className="flex items-center flex-shrink-0">
+                <AddToCartButton
+                  product={item.product}
+                  disabled={item.quantity <= 0}
+                />
               </div>
             </div>
           ))}
         </div>
-        <div className="w-full lg:w.80 lg:sticky lg:top-4 h-fit bg-white p-6 border rounded-lg shadow-lg order-first lg:order-last fixed bottom-0 lg:left-auto">
+        <div className="w-full px-8 py-4 lg:w-90 lg:sticky lg:top-4 h-fit bg-white p-4 border rounded-lg shadow-lg order-first lg:order-last fixed bottom-0 right-0 lg:mx-auto">
           <h3 className="text-xl font-semibold">Order Summary</h3>
           <div className="mt-4 space-y-2">
             <p className="flex justify-between">
