@@ -8,6 +8,7 @@ import Form from "next/form"; // Adjust the path if Form is in the same director
 import { BasketIcon, PackageIcon, TrolleyIcon } from "@sanity/icons";
 import { User } from "@clerk/nextjs/server";
 import useBasketStore from "@/app/(store)/store";
+import router from "next/router";
 
 function Header() {
   const { user } = useUser();
@@ -98,6 +99,7 @@ function Header() {
                 </span>
               )}
             </Link>
+
             <div
               className="z-50 absolute left-1/2 -translate-x-1/2 top-full mb-2 hidden group-hover:block bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap"
               role="tooltip"

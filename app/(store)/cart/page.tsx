@@ -9,6 +9,10 @@ import { imageUrl } from "@/lib/imageUrl";
 import { Loader } from "lucide-react";
 import { set } from "sanity";
 import { randomUUID } from "crypto";
+import {
+  createCheckoutSession,
+  Metadata,
+} from "@/actions/createCheckoutSession";
 
 function CartPage() {
   const { isSignedIn } = useAuth();
@@ -36,6 +40,7 @@ function CartPage() {
       </div>
     );
   }
+
   const handleCheckout = async () => {
     if (!isSignedIn) return;
     setIsLoading(true);
@@ -44,7 +49,7 @@ function CartPage() {
         orderNumber: crypto.randomUUID(),
         customerName: user?.fullName || "Unknown Customer",
         customerEmail: user?.emailAddresses[0]?.emailAddress || "Unknown Email",
-        clerkUserId: user?.id,
+        clerkUserId: user!.id,
       };
       const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
       if (checkoutUrl) {
@@ -123,7 +128,7 @@ function CartPage() {
             <button
               onClick={handleCheckout}
               disabled={isLoading}
-              className="mt-4 w-full bg-sage-500 text-white py-2 shadow-md hover:bg-sage-400 transition-colors duration-300
+              className="mt-4 w-full bg-sage-500 text-white py-2 shadow-md hover:bg-sage-400 transition-colors duration-300 cursor-pointer
          disabled:bg-gray-400"
             >
               {isLoading ? "Prossessing..." : "Checkout"}
