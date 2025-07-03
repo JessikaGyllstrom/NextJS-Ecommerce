@@ -97,7 +97,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     products: sanityProducts,
     totalPrice: amount_total ? amount_total / 100 : 0,
     status: "paid",
-    orderedAt: new Date().toISOString(),
+    orderDate: new Date().toISOString(),
   });
 
   return order;

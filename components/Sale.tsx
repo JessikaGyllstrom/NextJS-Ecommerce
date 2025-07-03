@@ -5,10 +5,8 @@ import Image from "next/image";
 
 async function Sale() {
   const saleData = await getActiveSaleByCouponCode("SALE20");
-  console.log("Active Sale Data:", saleData);
 
   const sale = saleData?.[0];
-  console.log("Sale Data:", sale);
 
   if (!sale?.isActive) {
     console.log("No active sale found or sale is not active");
@@ -22,7 +20,7 @@ async function Sale() {
           <div className="relative w-screen h-[90vh]">
             <Image
               src={imageUrl(sale.image).url()}
-              alt={sale.name || "Sale Image"}
+              alt={sale.title || "Sale Image"}
               layout="fill"
               objectFit="cover"
               className="shadow-lg"
