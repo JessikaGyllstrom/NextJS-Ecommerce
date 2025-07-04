@@ -91,7 +91,7 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
     clerkUserId: clerkUserId,
     email: customerEmail,
     currency,
-    ammountDiscounted: total_details?.amount_discount
+    amountDiscount: total_details?.amount_discount
       ? total_details.amount_discount / 100
       : 0,
     products: sanityProducts,

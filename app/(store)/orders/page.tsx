@@ -23,7 +23,7 @@ async function Orders() {
         ) : (
           <div className=" py-8  ">
             {orders.map((order, idx) => (
-              <div key={idx} className="bg-gray-50 my-4 ">
+              <div key={idx} className="bg-gray-50 my-6 ">
                 <div className="py-4 px-8 bg-white border border-gray-200 rounded-lg shadow-lg text-gray-800 overflow-hidden mb-4 hover:shadow-2xl">
                   <div className="">
                     <p className="font-medium mt-2">Order Number</p>
@@ -48,7 +48,7 @@ async function Orders() {
                     <div className="py-4">
                       <span className="text-gray-800 text-md">Status: </span>
                       <span
-                        className={`ml-2 px-3 py-1 rounded-full text-md ${
+                        className={`ml-2 px-4 py-2 rounded-full text-md ${
                           order.status === "paid"
                             ? "bg-sage-200 text-gray-800"
                             : order.status === "pending"
@@ -62,7 +62,7 @@ async function Orders() {
                           {formatCurrency(
                             order.totalPrice ?? 0,
                             order.currency
-                          )}
+                          )}{" "}
                         </p>
                       </div>
                     </div>{" "}
