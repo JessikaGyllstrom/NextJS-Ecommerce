@@ -73,7 +73,7 @@ function CategorySelector({ categories }: CategorySelectorProps) {
                 <CommandItem
                   key={`category-${idx}`}
                   value={category.title}
-                  onSelect={(currentValue) => {
+                  onSelect={() => {
                     setValue(category._id ? "" : category._id);
                     router.push(`/categories/${category.slug?.current}`);
                     setOpen(false);

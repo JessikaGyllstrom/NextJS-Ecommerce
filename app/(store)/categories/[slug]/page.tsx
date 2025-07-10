@@ -3,7 +3,6 @@ import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
 import { getProductsByCategory } from "@/sanity/lib/products/getProductsByCategory";
 import ProductsView from "@/components/ProductsView";
 import CategorySelector from "@/components/CategorySelector";
-import Footer from "@/components/Footer";
 
 async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -19,7 +18,7 @@ async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
         Collection
       </h1>
       <CategorySelector categories={categories} />
-      <ProductsView products={products} categories={categories} />
+      <ProductsView products={products} />
     </div>
   );
 }

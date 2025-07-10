@@ -4,14 +4,7 @@ import { sanityFetch } from "../live";
 export const getProductsByCategory = async (categorySlug: string) => {
   const PRODUCTS_BY_CATEGORY_QUERY =
     defineQuery(`*[_type == "product" && $categorySlug in categories[]->slug.current] {
-    name,
-    price,
-    description,
-    image,
-    categories[]->{
-      title,
-      slug
-    }
+..._id,
   }`);
   try {
     const products = await sanityFetch({

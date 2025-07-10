@@ -43,6 +43,7 @@ export async function createCheckoutSession(
 
     const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&OrderNumber=${metadata.orderNumber}`;
     const cancelUrl = `${baseUrl}/cart`;
+    const validItems = items.filter((item) => item.product._id);
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
@@ -55,16 +56,15 @@ export async function createCheckoutSession(
       success_url: successUrl,
       cancel_url: cancelUrl,
 
-      line_items: items.map((item) => ({
+      line_items: validItems.map((item) => ({
         price_data: {
           currency: "usd",
           unit_amount: Math.round(item.product.price! * 100),
           product_data: {
             name: item.product.name || "Unknown Product",
-
             description: `Product ID: ${item.product._id}`,
             metadata: {
-              id: item.product._id,
+              id: item.product._id!,
             },
             images: item.product.image
               ? [imageUrl(item.product.image).url()]

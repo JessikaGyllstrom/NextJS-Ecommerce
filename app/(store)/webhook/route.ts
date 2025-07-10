@@ -1,9 +1,7 @@
-import { error } from "console";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
 import Stripe from "stripe";
-import { createClient } from "@sanity/client";
 import { backendClient } from "@/sanity/lib/backendClient";
 
 import { Metadata } from "@/actions/createCheckoutSession";
@@ -72,14 +70,14 @@ async function createOrderInSanity(session: Stripe.Checkout.Session) {
       expand: ["data.price.product"],
     }
   );
-  const sanityProducts = lineItemsWithProduct.data.map((item) => {
-    _key: crypto.randomUUID();
+  const sanityProducts = lineItemsWithProduct.data.map((item) => ({
+    _key: crypto.randomUUID(),
     product: {
-      _type: "reference";
-      _ref: (item.price?.product as Stripe.Product)?.metadata?.id;
-    }
-    quantity: item.quantity || 0;
-  });
+      _type: "reference",
+      _ref: (item.price?.product as Stripe.Product)?.metadata?.id,
+    },
+    quantity: item.quantity || 0,
+  }));
 
   const order = await backendClient.create({
     _type: "order",

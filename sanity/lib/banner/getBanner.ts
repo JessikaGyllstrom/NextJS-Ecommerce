@@ -2,22 +2,8 @@ import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
 
 export const getBanner = async () => {
-  const BANNER_QUERY = defineQuery(`*[_type == "banner"] | order(name asc) {
-    _id,
-    _type,
-    _createdAt,
-    _updatedAt,
-    _rev,
-    name,
-    title,
-    image {
-      asset {
-        _ref,
-        _type
-      },
-      hotspot,
-      crop
-    }
+  const BANNER_QUERY = defineQuery(`*[_type == "banner"] {
+  ...
   }`);
   try {
     const banner = await sanityFetch({

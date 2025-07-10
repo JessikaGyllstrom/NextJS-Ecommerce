@@ -1,6 +1,5 @@
 import Banner from "@/components/Banner";
 import CategorySelector from "@/components/CategorySelector";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ProductsView from "@/components/ProductsView";
 import Sale from "@/components/Sale";
@@ -20,7 +19,7 @@ export default async function Home() {
       <Hero hero={hero} />
       <Banner banner={banner} />
       <CategorySelector categories={categories} />
-      <ProductsView products={products} categories={categories} />
+      <ProductsView products={products} />
       <Sale />
     </div>
   );

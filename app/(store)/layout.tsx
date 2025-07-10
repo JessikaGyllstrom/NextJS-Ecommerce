@@ -1,48 +1,16 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "../../components/Header";
 import { SanityLive } from "@/sanity/lib/live";
-import { Roboto } from "next/font/google";
-import { Baloo_2 } from "next/font/google";
-import { Poppins } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import Footer from "@/components/Footer";
-
-const poppins = Poppins({
-  subsets: ["latin"], // Specify the character subset
-  weight: ["100", "200", "400", "700", "900"], // Include the font weights you need
-  variable: "--font-poppins", // Optional: Define a CSS variable for the font
-});
 
 const monserrat = Montserrat({
   subsets: ["latin"],
   weight: ["100", "200", "400", "700", "900"],
   variable: "--font-montserrat",
 });
-
-const baloo2 = Baloo_2({
-  variable: "--font-baloo-2",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const roboto = Roboto({
-  weight: ["100", "200", "400", "700", "900"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto", // Optional: Define a CSS variable for the font
-});
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Bare Botanics Next App",
@@ -57,10 +25,7 @@ export default function RootLayout({
   return (
     <ClerkProvider dynamic>
       <html lang="en">
-        <body
-          className={`${monserrat.variable} antialiased`}
-          // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+        <body className={`${monserrat.variable} antialiased`}>
           <Header />
           <main>{children}</main>
           <Footer />

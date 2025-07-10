@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect } from "react";
 import useBasketStore from "../store";
-import { SignIn, SignInButton, useAuth, useUser } from "@clerk/nextjs";
+import { SignInButton, useAuth, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import AddToCartButton from "@/components/AddToCartButton";
 import Image from "next/image";
 import { imageUrl } from "@/lib/imageUrl";
 import { Loader } from "lucide-react";
-import { set } from "sanity";
-import { randomUUID } from "crypto";
 import {
   createCheckoutSession,
   Metadata,
@@ -72,7 +70,6 @@ function CartPage() {
               className="mb-4 p-4 border rounded-lg shadow-lg flex justify-between items-center"
             >
               <div className="flex items-center flex-1 min-w-0">
-                {/* Make the image clickable */}
                 <div
                   className="w-40 h-40 flex-shrink-0 mr-4 cursor-pointer"
                   onClick={() =>

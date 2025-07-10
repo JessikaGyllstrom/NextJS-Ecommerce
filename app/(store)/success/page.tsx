@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import useBasketStore from "../store";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

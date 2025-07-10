@@ -32,7 +32,7 @@ async function Sale() {
                     {/* Image */}
                     <Image
                       src={imageUrl(sale.image).url()}
-                      alt={sale.name || "Sale Image"}
+                      alt={sale.title || "Sale Image"}
                       layout="fill"
                       objectFit="cover"
                       className="shadow-lg"

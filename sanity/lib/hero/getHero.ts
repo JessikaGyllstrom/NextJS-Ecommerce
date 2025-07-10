@@ -2,31 +2,8 @@ import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
 
 export const getHero = async () => {
-  const HERO_QUERY = defineQuery(`*[_type == "hero"] | order(name asc) {
-    _id,
-    _type,
-    _createdAt,
-    _updatedAt,
-    _rev,
-    name,
-    title,
-    description,
-    image {
-      asset {
-        _ref,
-        _type
-      },
-      hotspot,
-      crop
-    }, 
-    heroIcon {
-      asset {
-        _ref,
-        _type
-      },
-      hotspot,
-      crop
-    }
+  const HERO_QUERY = defineQuery(`*[_type == "hero"] {
+     ...
   }`);
   try {
     const hero = await sanityFetch({

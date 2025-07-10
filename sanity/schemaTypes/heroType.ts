@@ -11,7 +11,7 @@ export const heroType = defineType({
       name: "name",
       title: "Hero Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
       name: "description",

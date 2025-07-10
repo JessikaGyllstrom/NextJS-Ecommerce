@@ -3,12 +3,9 @@
 import React from "react";
 import { ClerkLoaded, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
-
-import Form from "next/form"; // Adjust the path if Form is in the same directory
-import { BasketIcon, PackageIcon, TrolleyIcon } from "@sanity/icons";
-import { User } from "@clerk/nextjs/server";
+import Form from "next/form";
+import { PackageIcon, TrolleyIcon } from "@sanity/icons";
 import useBasketStore from "@/app/(store)/store";
-import router from "next/router";
 
 function Header() {
   const { user } = useUser();
