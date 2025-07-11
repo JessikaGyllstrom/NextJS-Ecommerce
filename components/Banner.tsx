@@ -16,7 +16,7 @@ function Banner({ banner }: BannerProps) {
     >
       {banner.map((item) => (
         <div
-          className="flex flex-col items-center px-6 justify-center"
+          className="flex flex-col items-center px-6 justify-center text-center"
           key={item._id}
         >
           <Image
@@ -26,7 +26,7 @@ function Banner({ banner }: BannerProps) {
             width={50}
             height={50}
           />
-          <p className="text-white font-light pt-2">{item.name}</p>
+          <p className="text-xs text-white font-normal pt-2">{item.name}</p>
         </div>
       ))}
     </div>

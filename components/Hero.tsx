@@ -14,7 +14,9 @@ function Hero({ hero }: HeroProps) {
   const scrollToProducts = () => {
     const productsSection = document.getElementById("products-section");
     if (productsSection) {
-      productsSection.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
   };
   return (
@@ -27,17 +29,16 @@ function Hero({ hero }: HeroProps) {
             layout="fill"
             objectFit="cover"
           />
-
-          <div className="absolute right-18 top-1/3 transform -translate-y-1/2 w-1/2">
-            <h1 className="font-bold text-6xl text-zinc-900 py-1 text-left">
+          <div className="absolute top-1/5 px-4 lg:w-1/2 lg:right-22 text-center lg:text-left">
+            <h1 className="font-bold text-3xl lg:text-6xl text-zinc-900 py-1">
               {item.name?.split(" ").slice(0, 3).join(" ")} <br />{" "}
               {item.name?.split(" ").slice(3, 5).join(" ")}
               <span className="ml-2 text-sage-500">
                 {item.name?.split(" ").slice(-1)}
               </span>
             </h1>
-            <div className="text-left md:px-2 md:w-[70%] ">
-              <p className="mt-2 pr-3 text-xl text-zinc-900">
+            <div className="text-center md:text-left">
+              <p className="mt-2 px-6 lg:text-xl text-zinc-900 lg:px-0">
                 {item.description
                   ?.map((block) =>
                     block._type === "block"
@@ -49,7 +50,7 @@ function Hero({ hero }: HeroProps) {
             </div>
             <Button
               onClick={scrollToProducts}
-              className="my-4 mx-2 rounded-none px-12 py-6 text-white bg-sage-500 text-lg cursor-pointer shadow-xl hover:bg-sage-400"
+              className="my-4 max-w-xs rounded-none px-12 py-6 text-white bg-sage-500 lg:text-xl cursor-pointer shadow-xl hover:bg-sage-400"
             >
               Shop Now
             </Button>

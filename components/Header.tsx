@@ -24,7 +24,7 @@ function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center px-4 py-2">
+    <header className="flex justify-between items-center px-6 py-2">
       <div className="flex flex-wrap md:flex-nowrap w-full justify-between items-center gap-4">
         <Link
           href="/"
@@ -87,31 +87,33 @@ function Header() {
           </Form>
         </div>
         <div className="flex justify-center items-center space-x-12 mt-4 sm-mt-0 flex-1 md:flex-none md:space-x-4">
-          <div className="relative group">
-            <Link href="/cart" className="">
-              <TrolleyIcon className="w-8 h-8 text-zinc-900 hover:text-sage-400" />
-              {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-sage-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
+          {user && (
+            <div className="relative group">
+              <Link href="/cart" className="">
+                <TrolleyIcon className="w-8 h-8 text-zinc-900 hover:text-sage-400" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-sage-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {itemCount}
+                  </span>
+                )}
+              </Link>
 
-            <div
-              className="z-50 absolute left-1/2 -translate-x-1/2 top-full mb-2 hidden group-hover:block bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap"
-              role="tooltip"
-            >
-              Go to Cart
-              {/* Tooltip Arrow */}
-              <div className="absolute w-3 h-3 bg-gray-900 rotate-45 -top-1 left-1/2 -translate-x-1/2"></div>
+              <div
+                className="z-50 absolute left-1/2 -translate-x-1/2 top-full mb-2 hidden group-hover:block bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap"
+                role="tooltip"
+              >
+                Go to Cart
+                {/* Tooltip Arrow */}
+                <div className="absolute w-3 h-3 bg-gray-900 rotate-45 -top-1 left-1/2 -translate-x-1/2"></div>
+              </div>
             </div>
-          </div>
+          )}
 
           <ClerkLoaded>
             {user && (
               <div className="relative group">
                 <Link href="/orders" className="">
-                  <PackageIcon className="w-8 h-8 text-zinc-900  hover:text-sage-400" />
+                  <PackageIcon className="w-8 h-8 text-zinc-900 hover:text-sage-400" />
                 </Link>
                 <div
                   className="z-50 absolute left-1/2 -translate-x-1/2 top-full mb-2 hidden group-hover:block bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap"
@@ -132,7 +134,7 @@ function Header() {
               </div>
             ) : (
               <SignInButton mode="modal">
-                <button className="bg-blush-400 hover:bg-blush-500 cursor-pointer animate-pulser text-black py-2 px-4 shadow-lg">
+                <button className="font-normal text-lg bg-blush-400 hover:bg-blush-500 cursor-pointer animate-pulser text-black py-2 px-6 shadow-lg">
                   Sign In
                 </button>
               </SignInButton>

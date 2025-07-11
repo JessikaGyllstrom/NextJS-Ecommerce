@@ -20,7 +20,7 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8  min-h-[100vh]md:py-24 lg:max-w-[70vw]">
+    <div className="container mx-auto px-4 py-8 lg:mb-16 min-h-[100vh]md:py-24 lg:max-w-[70vw]">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div
           className={`relative aspect-square overflow-hidden rounded-lg shadow-lg ${isOutOfStock ? "opacity-50" : ""}`}

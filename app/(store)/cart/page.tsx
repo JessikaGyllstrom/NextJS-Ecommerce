@@ -31,8 +31,8 @@ function CartPage() {
 
   if (groupedItems.length === 0) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="text-2xl font-semibold text-gray-700">
+      <div className="flex justify-center h-screen">
+        <div className="text-2xl font-semibold text-gray-700 mt-8 lg:mt-16">
           Your cart is empty
         </div>
       </div>
@@ -60,7 +60,7 @@ function CartPage() {
     }
   };
   return (
-    <div className="container mx-auto p-4 max-w-5xl min-h-[100vh]">
+    <div className="container mx-auto p-4 max-w-5xl min-h-[60vh]">
       <h1 className="text-3xl font-bold my-6">Your Cart</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-grow">
@@ -131,7 +131,7 @@ function CartPage() {
               onClick={handleCheckout}
               disabled={isLoading}
               className="mt-4 w-full bg-sage-500 text-white py-2 shadow-md hover:bg-sage-400 transition-colors duration-300 cursor-pointer
-         disabled:bg-gray-400"
+         disabled:bg-blush-500"
             >
               {isLoading ? "Prossessing..." : "Checkout"}
             </button>

@@ -13,7 +13,7 @@ async function Orders() {
   console.log("Orders:", orders);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4 mb-6 lg:mb-16">
       <div className="bg-white p-4 sm:p-8 rounded-xl shadow-lg w-full max-w-4xl">
         <h1 className="text-3xl font-bold mb-4 tracking-tight">My Orders</h1>
         {orders.length === 0 ? (

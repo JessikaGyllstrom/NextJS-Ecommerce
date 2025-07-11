@@ -12,8 +12,8 @@ async function SearchPage({
 
   if (!products.length)
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-2xl font-bold">
+      <div className="flex flex-col items-center min-h-screen p-4">
+        <h1 className="text-2xl font-bold mt-6 lg:mt-16">
           No products found for{" "}
           <span className="italic">&quot;{query}&quot;</span>
         </h1>

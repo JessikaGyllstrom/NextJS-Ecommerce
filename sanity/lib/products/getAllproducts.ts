@@ -5,7 +5,7 @@ export const getAllProducts = async () => {
   const ALL_PRODUCTS_QUERY = defineQuery(`*[
     _type == "product"
   ] | order(name asc) {
-    ..._id,
+    ...,
   }`);
   try {
     const products = await sanityFetch({

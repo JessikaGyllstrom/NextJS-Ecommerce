@@ -78,6 +78,7 @@ function CategorySelector({ categories }: CategorySelectorProps) {
                     router.push(`/categories/${category.slug?.current}`);
                     setOpen(false);
                   }}
+                  className="cursor-pointer hover:bg-gray-200 text-black rounded-none font-normal py-2 px-4 flex items-center"
                 >
                   {category.title}
                   <Check

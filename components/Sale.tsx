@@ -37,7 +37,7 @@ async function Sale() {
                       objectFit="cover"
                       className="shadow-lg"
                     />
-                    <div className="absolute right-11 top-1/3 transform -translate-y-1/2 w-1/2">
+                    <div className="absolute top-5 px-4 lg:w-1/2 lg:right-22 text-center lg:text-left">
                       <h2 className=" text-black font-bold text-4xl py-2 rounded-lg">
                         {sale.title ? (
                           <>
@@ -52,9 +52,16 @@ async function Sale() {
                           "Don't miss out on this amazing offer!"
                         )}
                       </h2>
-                      <p className="mt-6 pr-12 text-lg weight-light text-zinc-900 break-words">
+                      <p className="mt-6 px-4 lg:pr-12 text-lg weight-light text-zinc-900 break-words">
                         {sale.description || "Special Sale"}
                       </p>
+                      <h3 className="mt-2 text-lg break-words">
+                        Use Coupon Code{" "}
+                        <span className="font-semibold text-xl break-words">
+                          SALE20
+                        </span>{" "}
+                        in Checkout
+                      </h3>
                     </div>
                   </div>
                 )}

@@ -9,7 +9,7 @@ async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const products = await getProductsByCategory(slug);
   const categories = await getAllCategories();
   return (
-    <div className="flex flex-col w-screen justify-end items-center justify-top p-4">
+    <div className="flex flex-col w-screen justify-end items-center justify-top p-4 mb-6 lg:mb-16">
       <h1 className="text-3xl font-bold p-8">
         {slug
           .split("-")
