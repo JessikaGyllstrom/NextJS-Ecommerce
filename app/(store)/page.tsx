@@ -3,6 +3,7 @@ import CategorySelector from "@/components/CategorySelector";
 import Hero from "@/components/Hero";
 import ProductsView from "@/components/ProductsView";
 import Sale from "@/components/Sale";
+import ScrollToTop from "@/components/ui/scrollToTop";
 import { getBanner } from "@/sanity/lib/banner/getBanner";
 import { getHero } from "@/sanity/lib/hero/getHero";
 import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
@@ -17,6 +18,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen w-screen">
       <Hero hero={hero} />
+      <ScrollToTop />
       <Banner banner={banner} />
       <CategorySelector categories={categories} />
       <ProductsView products={products} />

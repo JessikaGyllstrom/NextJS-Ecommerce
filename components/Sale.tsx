@@ -52,11 +52,11 @@ async function Sale() {
                           "Don't miss out on this amazing offer!"
                         )}
                       </h2>
-                      <p className="mt-6 px-4 lg:pr-12 text-lg weight-light text-zinc-900 break-words">
+                      <p className="mt-6 px-4 lg:px-0 text-lg weight-light text-zinc-900 break-words">
                         {sale.description || "Special Sale"}
                       </p>
                       <h3 className="mt-2 text-lg break-words">
-                        Use Coupon Code{" "}
+                        Use coupon code{" "}
                         <span className="font-semibold text-xl break-words">
                           SALE20
                         </span>{" "}
