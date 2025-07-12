@@ -3,12 +3,16 @@ import React from "react";
 export default function Footer() {
   return (
     <footer>
-      <div className="bg-sage-500 py-4 text-white font-md">
+      <div className="bg-sage-700 py-4 text-white font-lg">
         <div className="container px-4 mx-auto">
           <div className="-mx-4 flex flex-wrap justify-between">
             <div className="flex flex-col  px-4 my-4 w-full xl:w-1/5">
               <div className="flex flex-row items-center">
-                <Link href="/" className="flex items-center mb-2">
+                <Link
+                  href="/"
+                  className="flex items-center mb-2"
+                  aria-label="Go to Home"
+                >
                   <svg
                     fill="#ffffff"
                     width="64px"
@@ -52,22 +56,38 @@ export default function Footer() {
               </div>
               <ul className="leading-8">
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label="About Us"
+                  >
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label="Conditions"
+                  >
                     Terms &amp; Conditions
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label=" Privacy Policy"
+                  >
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label="Contact Us"
+                  >
                     Contact Us
                   </a>
                 </li>
@@ -81,17 +101,29 @@ export default function Footer() {
               </div>
               <ul className="leading-8">
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label="SkinCare"
+                  >
                     SkinCare
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label="New Arrivals"
+                  >
                     New Arrivals
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blush-500">
+                  <a
+                    href="#"
+                    className="hover:text-blush-500"
+                    aria-label="Bestsellers"
+                  >
                     Bestsellers
                   </a>
                 </li>
@@ -105,6 +137,7 @@ export default function Footer() {
               </div>
               <a
                 href="#"
+                aria-label="Link to Facebook"
                 className="inline-flex items-center justify-center h-8 w-8 border border-white rounded-full mr-2 hover:text-blush-500 hover:border-blush-500"
               >
                 <svg
@@ -117,6 +150,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
+                aria-label="Link to Instagram"
                 className="inline-flex items-center justify-center h-8 w-8 border border-white rounded-full mr-2 hover:text-blush-500 hover:border-blush-500"
               >
                 <svg
@@ -129,6 +163,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
+                aria-label="Link to Twitter"
                 className="inline-flex items-center justify-center h-8 w-8 border border-white rounded-full mr-2 hover:text-blush-500 hover:border-blush-500"
               >
                 <svg

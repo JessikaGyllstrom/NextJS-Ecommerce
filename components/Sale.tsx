@@ -9,7 +9,6 @@ async function Sale() {
   const sale = saleData?.[0];
 
   if (!sale?.isActive) {
-    console.log("No active sale found or sale is not active");
     return null;
   }
 
@@ -52,15 +51,15 @@ async function Sale() {
                           "Don't miss out on this amazing offer!"
                         )}
                       </h2>
-                      <p className="mt-6 px-4 lg:px-0 text-lg weight-light text-zinc-900 break-words">
+                      <p className="mt-2 px-4 lg:px-0 text-lg text-black break-words">
                         {sale.description || "Special Sale"}
                       </p>
-                      <h3 className="mt-2 text-lg break-words">
+                      <h3 className="mt-2 text-lg break-words text-black">
                         Use coupon code{" "}
-                        <span className="font-semibold text-xl break-words">
+                        <span className="font-semibold text-xl break-words  text-black">
                           SALE20
                         </span>{" "}
-                        in Checkout
+                        in checkout
                       </h3>
                     </div>
                   </div>

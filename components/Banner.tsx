@@ -26,7 +26,9 @@ function Banner({ banner }: BannerProps) {
             width={50}
             height={50}
           />
-          <p className="text-xs text-white font-normal pt-2">{item.name}</p>
+          <p className="text-xs text-white font-normal pt-2 md:text-lg">
+            {item.name}
+          </p>
         </div>
       ))}
     </div>

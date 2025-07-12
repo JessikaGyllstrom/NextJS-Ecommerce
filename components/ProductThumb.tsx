@@ -9,8 +9,8 @@ function ProductThumb({ product }: { product: Product }) {
   return (
     <Link
       href={`/product/${product.slug?.current}`}
-      className={`flex flex-col items-center justify-center p-4 border rounded-lg hover:shadow-lg transition-shadow duration-300 overflow-hidden 
-      ${isOutOfStock ? "opacity-50 cursor-not-allowed" : ""}`}
+      className={`bg-white flex flex-col items-center justify-center p-4 border rounded-lg hover:shadow-lg transition-shadow duration-300 overflow-hidden 
+      ${isOutOfStock ? "opacity-60 cursor-not-allowed" : ""}`}
     >
       {" "}
       <div className="relative aspect-square w-full h-full overflow-hidden">
@@ -24,16 +24,19 @@ function ProductThumb({ product }: { product: Product }) {
           />
         )}
         {isOutOfStock && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/30">
-            <span className="text-white font-bold text-lg">Out of Stock</span>
-          </div>
+          <>
+            <div className="absolute inset-0 z-10"></div>
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80">
+              <span className="text-white font-bold text-lg">Out of Stock</span>
+            </div>
+          </>
         )}
       </div>
       <div className="p-4">
-        <h2 className="text-lg font-medium text-gray-900 truncate">
+        <h2 className="text-lg font-semibold text-black truncate">
           {product.name}
         </h2>
-        <p className="mt-2 text-sm text-gray-800 line-clamp-3">
+        <p className="mt-2 text-sm text-black line-clamp-3">
           {product.description
             ?.map((block) =>
               block._type === "block"
@@ -42,7 +45,7 @@ function ProductThumb({ product }: { product: Product }) {
             )
             .join(" ") || "No description available."}
         </p>
-        <p className="mt-2 text-lg font-nomal text-zinc-900">
+        <p className="mt-2 text-lg font-nomal text-black">
           ${product.price?.toFixed(2)}
         </p>
       </div>

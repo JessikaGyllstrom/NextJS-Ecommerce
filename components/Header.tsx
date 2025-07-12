@@ -112,7 +112,7 @@ function Header() {
           <ClerkLoaded>
             {user && (
               <div className="relative group">
-                <Link href="/orders" className="">
+                <Link href="/orders" aria-label="View Orders">
                   <PackageIcon className="w-8 h-8 text-zinc-900 hover:text-sage-400" />
                 </Link>
                 <div
@@ -128,7 +128,7 @@ function Header() {
               <div className="flex items-center space-x-2">
                 <UserButton />
                 <div className="hidden sm:block">
-                  <p className="text-gray-400">Welcome back</p>
+                  <p className="text-gray-600">Welcome back</p>
                   <p className="font-bold">{user.fullName}!</p>
                 </div>
               </div>

@@ -31,11 +31,20 @@ function CategorySelector({ categories }: CategorySelectorProps) {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div className="flex justify-center border-black/80 pt-2">
+        <div
+          className="flex justify-center border-black/80 pt-2"
+          role="button"
+          aria-haspopup="menu" // Correct value for aria-haspopup
+          aria-expanded={open} // Dynamically set based on the state
+          aria-controls="popover-menu" // ID of the controlled popover content
+          onClick={() => setOpen(!open)} // Toggle the popover state
+        >
+          {" "}
           <Button
             variant="outline"
             role="combobox"
             aria-expanded={open}
+            aria-label="Filter by Category"
             className="inline-flex justify-center space-x-2 cursor-pointer hover:bg-gray-200 text-black rounded-none font-normal py-2 px-4"
           >
             {value
@@ -79,6 +88,7 @@ function CategorySelector({ categories }: CategorySelectorProps) {
                     setOpen(false);
                   }}
                   className="cursor-pointer hover:bg-gray-200 text-black rounded-none font-normal py-2 px-4 flex items-center"
+                  aria-label={`Filter by ${category.title}`}
                 >
                   {category.title}
                   <Check
