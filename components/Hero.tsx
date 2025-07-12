@@ -38,7 +38,7 @@ function Hero({ hero }: HeroProps) {
               </span>
             </h1>
             <div className="text-center md:text-left">
-              <p className="mt-2 px-6 md:text-xl text-zinc-900 md:px-0">
+              <p className="mt-2 px-6 md:text-xl text-zinc-900 md:px-0 lg:w-3/4">
                 {item.description
                   ?.map((block) =>
                     block._type === "block"
@@ -50,7 +50,7 @@ function Hero({ hero }: HeroProps) {
             </div>
             <Button
               onClick={scrollToProducts}
-              className="my-4 max-w-xs rounded-none px-12 py-6 text-white bg-sage-500 md:text-xl cursor-pointer shadow-xl hover:bg-sage-400"
+              className="my-4  md:max-w-xs rounded-none px-8 py-6 text-white bg-sage-500 md:text-xl cursor-pointer shadow-xl hover:bg-sage-400"
             >
               Shop Now
             </Button>

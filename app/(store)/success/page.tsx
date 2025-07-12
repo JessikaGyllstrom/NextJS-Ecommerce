@@ -15,9 +15,10 @@ function SuccessPage() {
       clearBasket();
     }
   }, [orderNumber, clearBasket]);
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-50 w-full">
-      <div className="py-6 text-2xl font-semibold text-gray-700 bg-white shadow-lg flex flex-col items-center justify-center lg:w-[45vw] mt-8 px-6">
+      <div className="py-6 text-2xl font-semibold text-gray-700 bg-white shadow-lg flex flex-col items-center justify-center lg:w-[45vw] mt-8 px-6 lg:mt-16">
         <div className="relative flex items-center justify-center w-24 h-24 rounded-full bg-sage-400/30">
           <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-sage-400">
             <svg
@@ -83,4 +84,5 @@ function SuccessPage() {
     </div>
   );
 }
+
 export default SuccessPage;

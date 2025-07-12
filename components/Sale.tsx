@@ -27,8 +27,7 @@ async function Sale() {
             <div className="w-full py-10">
               <div className="container mx-auto flex flex-col items-center">
                 {sale.image && (
-                  <div className="relative w-screen h-[90vh]">
-                    {/* Image */}
+                  <div className="relative w-screen">
                     <Image
                       src={imageUrl(sale.image).url()}
                       alt={sale.title || "Sale Image"}
@@ -36,7 +35,7 @@ async function Sale() {
                       objectFit="cover"
                       className="shadow-lg"
                     />
-                    <div className="absolute top-5 px-4 lg:w-1/2 lg:right-22 text-center lg:text-left">
+                    <div className="absolute top-5 px-4 lg:w-1/3 lg:right-50 text-center lg:top-35 lg:text-left">
                       <h2 className=" text-black font-bold text-4xl py-2 rounded-lg">
                         {sale.title ? (
                           <>
@@ -51,12 +50,12 @@ async function Sale() {
                           "Don't miss out on this amazing offer!"
                         )}
                       </h2>
-                      <p className="mt-2 px-4 lg:px-0 text-lg text-black break-words">
+                      <p className="mt-1 px-4 lg:px-0 text-lg text-black break-words lg:text-xl">
                         {sale.description || "Special Sale"}
                       </p>
-                      <h3 className="mt-2 text-lg break-words text-black">
+                      <h3 className="mt-2 text-lg break-words text-black lg:text-xl">
                         Use coupon code{" "}
-                        <span className="font-semibold text-xl break-words  text-black">
+                        <span className="font-semibold text-xl break-words  text-black ">
                           SALE20
                         </span>{" "}
                         in checkout
