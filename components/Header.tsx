@@ -24,7 +24,7 @@ function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center px-6 py-2">
+    <header className="flex justify-between items-center px-6 py-2 shadow-lg">
       <div className="flex flex-wrap md:flex-nowrap w-full justify-between items-center gap-4">
         <Link
           href="/"

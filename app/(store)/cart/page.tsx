@@ -60,13 +60,13 @@ function CartPage() {
     }
   };
   return (
-    <div className="container mx-auto p-4 max-w-5xl min-h-[60vh]">
+    <div className="container mx-auto p-4 max-w-5xl min-h-[60vh] mb-6 lg:mb-16">
       <h1 className="text-3xl font-bold my-6">Your Cart</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="flex-grow">
-          {groupedItems.map((item) => (
+          {groupedItems.map((item, idx) => (
             <div
-              key={item.product._id}
+              key={item.product._id || idx}
               className="mb-4 p-4 border rounded-lg shadow-lg flex justify-between items-center"
             >
               <div className="flex items-center flex-1 min-w-0">
