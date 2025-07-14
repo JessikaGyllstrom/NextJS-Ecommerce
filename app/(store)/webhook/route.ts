@@ -5,6 +5,13 @@ import Stripe from "stripe";
 import { backendClient } from "@/sanity/lib/backendClient";
 
 import { Metadata } from "@/actions/createCheckoutSession";
+import useBasketStore from "../store";
+
+export const config = {
+  api: {
+    bodyParser: false, // Disable Next.js body parser
+  },
+};
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
@@ -40,6 +47,9 @@ export async function POST(req: NextRequest) {
     try {
       const order = await createOrderInSanity(session);
       console.log("Order created in Sanity:", order);
+      // Clear the basket after successful payment and order creation
+      const clearBasket = useBasketStore.getState().clearBasket;
+      clearBasket(); // Clear the basket
     } catch (error) {
       console.error("Error creating order in Sanity:", error);
       return NextResponse.json(

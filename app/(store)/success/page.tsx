@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useBasketStore from "../store";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -86,3 +86,6 @@ function SuccessPage() {
 }
 
 export default SuccessPage;
+function setSessionId(sessionIdFromURL: string | null) {
+  throw new Error("Function not implemented.");
+}
