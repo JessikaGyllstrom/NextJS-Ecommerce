@@ -5,7 +5,7 @@ import useBasketStore from "../store";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-function SuccessPage() {
+export function SuccessPage() {
   const searchParams = new URLSearchParams(window.location.search);
   const orderNumber = searchParams.get("OrderNumber");
   const clearBasket = useBasketStore((state) => state.clearBasket);
