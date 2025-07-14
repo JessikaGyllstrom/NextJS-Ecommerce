@@ -84,8 +84,3 @@ function SuccessPage() {
     </div>
   );
 }
-
-export default SuccessPage;
-function setSessionId(sessionIdFromURL: string | null) {
-  throw new Error("Function not implemented.");
-}
