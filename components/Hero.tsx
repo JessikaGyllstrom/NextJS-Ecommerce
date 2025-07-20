@@ -26,8 +26,9 @@ function Hero({ hero }: HeroProps) {
           <Image
             src={item.image ? imageUrl(item.image).url() : ""}
             alt={item.name || "Hero image"}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
+            priority
           />
           <div className="absolute top-1/5 px-4 md:w-1/2 md:right-22 text-center md:text-left">
             <h1 className="font-bold text-3xl md:text-6xl text-zinc-900 py-1">

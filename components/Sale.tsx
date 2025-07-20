@@ -16,7 +16,7 @@ async function Sale() {
     <section className="w-full py-10">
       <div className="container mx-auto flex flex-col items-center">
         {sale.image && (
-          <div className="relative w-screen h-[90vh]">
+          <div className="relative w-screen h-[100vh]">
             <Image
               src={imageUrl(sale.image).url()}
               alt={sale.title || "Sale Image"}

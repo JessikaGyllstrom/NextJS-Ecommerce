@@ -10,7 +10,6 @@ async function Orders() {
     return redirect("/");
   }
   const orders = await getMyOrders(userId);
-  console.log("Orders:", orders);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4 mb-6 lg:mb-16">

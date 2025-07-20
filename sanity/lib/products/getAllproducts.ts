@@ -11,7 +11,6 @@ export const getAllProducts = async () => {
     const products = await sanityFetch({
       query: ALL_PRODUCTS_QUERY,
     });
-    console.log("Fetched products:", products);
     return products.data || [];
   } catch (error) {
     console.error("Error fetching products:", error);

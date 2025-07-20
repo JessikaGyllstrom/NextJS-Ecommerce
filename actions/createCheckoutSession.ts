@@ -14,6 +14,7 @@ export type GroupedBasketItem = {
   product: BasketItem["product"];
   quantity: number;
 };
+
 export async function createCheckoutSession(
   items: GroupedBasketItem[],
   metadata: Metadata
@@ -27,56 +28,64 @@ export async function createCheckoutSession(
           .join(", ")}`
       );
     }
-    const customers = await stripe.customers.list({
+
+    // Create line items for Stripe checkout
+    const lineItems = items.map((item) => ({
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: item.product.name,
+          images: item.product.image
+            ? [imageUrl(item.product.image).url()]
+            : [],
+        },
+        unit_amount: item.product.price
+          ? Math.round(item.product.price * 100)
+          : 0,
+      },
+      quantity: item.quantity,
+    }));
+
+    const existingCustomers = await stripe.customers.list({
       email: metadata.customerEmail,
-      limit: 1,
     });
-    let customerId: string | undefined;
-    if (customers.data.length > 0) {
-      customerId = customers.data[0].id;
-    }
 
-    const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? `https://${process.env.VERCEL_URL}`
-        : `${process.env.NEXT_PUBLIC_BASE_URL}`;
+    const customer =
+      existingCustomers.data.length > 0
+        ? existingCustomers.data[0]
+        : await stripe.customers.create({
+            email: metadata.customerEmail,
+            name: metadata.customerName,
+          });
 
-    const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&OrderNumber=${metadata.orderNumber}`;
-    const cancelUrl = `${baseUrl}/cart`;
-    const validItems = items.filter((item) => item.product._id);
-
+    // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
-      customer: customerId,
-      customer_creation: customerId ? undefined : "always",
-      customer_email: !customerId ? metadata.customerEmail : undefined,
-      metadata,
-      mode: "payment",
-      allow_promotion_codes: true,
-
-      success_url: successUrl,
-      cancel_url: cancelUrl,
-
-      line_items: validItems.map((item) => ({
+      payment_method_types: ["card"],
+      line_items: lineItems.map((item) => ({
+        ...item,
         price_data: {
-          currency: "usd",
-          unit_amount: Math.round(item.product.price! * 100),
+          ...item.price_data,
           product_data: {
-            name: item.product.name || "Unknown Product",
-            description: `Product ID: ${item.product._id}`,
-            metadata: {
-              id: item.product._id!,
-            },
-            images: item.product.image
-              ? [imageUrl(item.product.image).url()]
-              : undefined,
+            ...item.price_data.product_data,
+            name: item.price_data.product_data.name || "Unnamed Product", // Provide a default name
           },
         },
-        quantity: item.quantity,
       })),
+      mode: "payment",
+      customer: customer.id,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}&clearBasket=true`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+      metadata: {
+        orderNumber: metadata.orderNumber,
+        clerkUserId: metadata.clerkUserId,
+        customerEmail: metadata.customerEmail,
+        customerName: metadata.customerName,
+      },
     });
-    return session.url;
+
+    return session.url; // Return the checkout session URL
   } catch (error) {
     console.error("Error creating checkout session:", error);
-    throw error;
+    throw new Error("Failed to create checkout session");
   }
 }

@@ -30,7 +30,9 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
               src={imageUrl(product.image).url()}
               alt={product.name ?? "Product Image"}
               fill
-              className="object-cover transition-transform duration-300 hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="transition-transform duration-300 hover:scale-105"
+              priority
             />
           )}
           {isOutOfStock && (
