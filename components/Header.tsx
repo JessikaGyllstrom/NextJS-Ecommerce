@@ -134,7 +134,7 @@ function Header() {
               </div>
             ) : (
               <SignInButton mode="modal">
-                <button className="font-normal text-lg bg-blush-400 hover:bg-blush-500 cursor-pointer animate-pulser text-black py-2 px-6 shadow-lg">
+                <button className="font-normal text-lg bg-blush-400 hover:bg-blush-500 cursor-pointer animate-pulser text-black py-2 px-6 shadow-lg mb-4 md:mb-0 ">
                   Sign In
                 </button>
               </SignInButton>
