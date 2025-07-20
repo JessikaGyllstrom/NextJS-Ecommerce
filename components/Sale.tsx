@@ -20,19 +20,19 @@ async function Sale() {
             <Image
               src={imageUrl(sale.image).url()}
               alt={sale.title || "Sale Image"}
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
               className="shadow-lg"
             />
             <div className="w-full py-10">
               <div className="container mx-auto flex flex-col items-center">
                 {sale.image && (
-                  <div className="relative w-screen">
+                  <div className="relative w-screen  h-[100vh]">
                     <Image
                       src={imageUrl(sale.image).url()}
                       alt={sale.title || "Sale Image"}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: "cover" }}
                       className="shadow-lg"
                     />
                     <div className="absolute top-5 px-4 lg:w-1/3 lg:right-50 text-center lg:top-35 lg:text-left">
